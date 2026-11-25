@@ -1,3 +1,33 @@
+const themeLink = document.createElement('link');
+themeLink.rel = 'stylesheet';
+themeLink.href = 'dark-mode.css';
+document.head.append(themeLink);
+
+const themeToggle = document.createElement('button');
+themeToggle.className = 'theme-toggle';
+themeToggle.type = 'button';
+themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+themeToggle.setAttribute('title', 'Switch to dark mode');
+themeToggle.innerHTML = '<span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span>';
+document.querySelector('.site-header')?.append(themeToggle);
+
+const savedTheme = localStorage.getItem('solraydiance-theme');
+if (savedTheme === 'dark') document.documentElement.dataset.theme = 'dark';
+
+function updateThemeButton() {
+  const darkMode = document.documentElement.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-label', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
+  themeToggle.setAttribute('title', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
+  themeToggle.innerHTML = `<span class="theme-icon" aria-hidden="true">${darkMode ? '☀' : '☾'}</span><span class="theme-label">${darkMode ? 'Light' : 'Dark'}</span>`;
+}
+updateThemeButton();
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = nextTheme;
+  localStorage.setItem('solraydiance-theme', nextTheme);
+  updateThemeButton();
+});
+
 const revealItems = document.querySelectorAll('.reveal');
 
 if ('IntersectionObserver' in window) {
