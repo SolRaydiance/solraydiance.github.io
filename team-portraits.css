@@ -1,0 +1,2 @@
+.person-photo img{object-fit:cover;object-position:center 22%;transform:scale(.88)}
+.person-card:hover .person-photo img{transform:scale(.92)}
