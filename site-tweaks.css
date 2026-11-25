@@ -1,0 +1,13 @@
+/* Hero: use the root banner without entrance or orbit animation. */
+.hero-image{background-image:url('./banner.png');animation:none}
+.hero-content{animation:none;margin-top:0}
+.hero-content h1{margin-bottom:18px}
+.hero-orbit{display:none}
+.hero-caption{justify-content:flex-start}
+
+/* The about section displays only the real logo, with no decorative tile or backdrop. */
+.about-logo{min-height:320px;display:grid;place-items:center}
+.about-logo img{display:block;width:min(70%,340px);height:auto;max-height:340px;object-fit:contain}
+
+/* Keep team cards clean, without the decorative arrow. */
+.person-arrow{display:none}
